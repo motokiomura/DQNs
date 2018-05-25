@@ -58,6 +58,8 @@ class Memory:   # stored as ( s, a, r, s_ ) in SumTree
         p = self._getPriority(error)
         self.tree.add(p, sample)
 
+    def add_p(self, p, sample):
+        self.tree.add(p, sample)
 
     def sample(self, n):
         batch = []
@@ -197,12 +199,12 @@ class Agent():
         reward = np.sign(reward)
 
         if self.t < INITIAL_REPLAY_SIZE:
-            self.memory.add(1, (state, action, reward, next_state, terminal))
+            self.memory.add_p(1, (state, action, reward, next_state, terminal))
 
         if self.t >= INITIAL_REPLAY_SIZE:
 
             # Store transition with max priority
-            self.memory.tree.add(self.memory.max_p, (state, action, reward, next_state, terminal))
+            self.memory.add_p(self.memory.max_p, (state, action, reward, next_state, terminal))
 
         # Train network
             if self.t % TRAIN_INTERVAL == 0:

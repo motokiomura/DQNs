@@ -25,3 +25,7 @@ https://arxiv.org/pdf/1511.05952.pdf
 `DDQN_PER_atari.py`
 `DDQN_IS-PER_atari.py`
 (重要度サンプリング付き)
+
+# Result
+
+<img width="408" alt="2018-06-20 14 38 05" src="https://user-images.githubusercontent.com/39490801/41701914-33c704a6-7569-11e8-9952-6f1884965b57.png">

@@ -4,6 +4,11 @@
 
 [OpenAI Gym Atari 2600 games](https://gym.openai.com/envs/#atari)で実行している。
 
+## Ape-X DQN
+https://openreview.net/pdf?id=H1Dy---0Z
+
+`ApeX_atari.py`
+
 ## Double Deep Q Learning (DDQN)
 https://arxiv.org/pdf/1509.06461.pdf
 

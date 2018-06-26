@@ -1,8 +1,8 @@
-# RL_implementation
+# rl_implementation
 
-深層強化学習関係の論文実装
+Implementation of papers about Reinforcement Learning.
 
-[OpenAI Gym Atari 2600 games](https://gym.openai.com/envs/#atari)で実行している。
+[OpenAI Gym Atari 2600 games](https://gym.openai.com/envs/#atari)
 
 ## Ape-X DQN
 https://openreview.net/pdf?id=H1Dy---0Z
@@ -24,7 +24,7 @@ https://arxiv.org/pdf/1511.05952.pdf
 
 `DDQN_PER_atari.py`
 `DDQN_IS-PER_atari.py`
-(重要度サンプリング付き)
+(with Importance Sampling)
 
 # Result
 

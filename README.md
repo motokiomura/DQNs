@@ -2,6 +2,7 @@
 
 Implementation of papers about Reinforcement Learning.
 
+Environment : 
 [OpenAI Gym Atari 2600 games](https://gym.openai.com/envs/#atari)
 
 ## Ape-X DQN

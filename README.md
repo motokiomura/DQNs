@@ -13,18 +13,18 @@ https://openreview.net/pdf?id=H1Dy---0Z
 ## Double Deep Q Learning (DDQN)
 https://arxiv.org/pdf/1509.06461.pdf
 
-`DDQN_atari.py`
+`ddqn_atari.py`
 
 ## Dueling Network
 https://arxiv.org/pdf/1511.06581.pdf
 
-`Dueling_DDQN_atari.py`
+`dueling_ddqn_atari.py`
 
 ## Prioritized Experience Replay
 https://arxiv.org/pdf/1511.05952.pdf
 
-`DDQN_PER_atari.py`
-`DDQN_IS-PER_atari.py`
+`ddqn_per_atari.py`
+`ddqn_is_per_atari.py`
 (with Importance Sampling)
 
 # Result

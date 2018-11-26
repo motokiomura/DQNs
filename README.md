@@ -8,7 +8,7 @@ Environment :
 ## Ape-X DQN
 https://openreview.net/pdf?id=H1Dy---0Z
 
-`apex_atari.py`
+See  https://github.com/utarumo/apex_dqn
 
 ## Double Deep Q Learning (DDQN)
 https://arxiv.org/pdf/1509.06461.pdf

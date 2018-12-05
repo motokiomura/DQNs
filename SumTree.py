@@ -1,3 +1,8 @@
+#
+#   This is cited from
+#       https://github.com/jaromiru/AI-blog/blob/master/SumTree.py
+#
+
 import numpy
 
 class SumTree:

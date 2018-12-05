@@ -75,7 +75,7 @@ class Agent():
                  action_interval = 4,  # The agent sees only every () input
                  train_interval = 4,  # The agent selects 4 actions between successive updates
                  batch_size = 32,  # Mini batch size
-                 lr = 0.00025 / 4,  # Learning rate used by RMSProp
+                 lr = 0.00025,  # Learning rate used by RMSProp
                  # MOMENTUM = 0.95  # Momentum used by RMSProp
                  # MIN_GRAD = 0.01  # Constant added to the squared gradient in the denominator of the RMSProp update
                  save_interval = 300000,  # The frequency with which the network is saved

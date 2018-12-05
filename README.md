@@ -1,31 +1,44 @@
 # rl_implementation
 
-Implementation of papers about Reinforcement Learning.
+Implementation of DQNs.
 
 Environment : 
 [OpenAI Gym Atari 2600 games](https://gym.openai.com/envs/#atari)
 
-## Ape-X DQN
-https://openreview.net/pdf?id=H1Dy---0Z
+## Papers
+DQN : [Playing Atari with Deep Reinforcement Learning](https://www.cs.toronto.edu/~vmnih/docs/dqn.pdf)
 
-See  https://github.com/utarumo/apex_dqn
+Double DQN : [Deep Reinforcement Learning with Double Q-learning](https://arxiv.org/pdf/1509.06461.pdf)
 
-## Double Deep Q Learning (DDQN)
-https://arxiv.org/pdf/1509.06461.pdf
+Prioritized Replay : [PRIORITIZED EXPERIENCE REPLAY](https://arxiv.org/pdf/1511.05952.pdf)
 
-`ddqn_atari.py`
+Dueling Network : [Dueling Network Architectures for Deep Reinforcement Learning](https://arxiv.org/pdf/1511.06581.pdf)
 
-## Dueling Network
-https://arxiv.org/pdf/1511.06581.pdf
+Ape-X DQN : [DISTRIBUTED PRIORITIZED EXPERIENCE REPLAY](https://openreview.net/pdf?id=H1Dy---0Z)
 
-`dueling_ddqn_atari.py`
+## Usage
 
-## Prioritized Experience Replay
-https://arxiv.org/pdf/1511.05952.pdf
+```
+$ python dqn_atari.py --prioritized 1 --double 1 --dueling 1 --n_step 3
+```
+### Prioritized Experience Replay
+`--prioritezed` : 0 or 1
 
-`ddqn_per_atari.py`
-`ddqn_is_per_atari.py`
-(with Importance Sampling)
+### Double Deep Q Learning (DDQN)
+`--double` : 0 or 1
+
+### Dueling Network
+`--dueling` : 0 or 1
+
+### multi-step bootstrap target
+`--n_step` : int (1 : normal TD error)
+<br>  
+Other arguments are described in `dqn_atari.py`
+
+
+### Ape-X DQN
+See  https://github.com/omurammm/apex_dqn
+
 
 # Result
 After 12,000 episodes (Ape-X DQN)

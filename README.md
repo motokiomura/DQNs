@@ -1,4 +1,4 @@
-# rl_implementation
+# DQNs
 
 Implementation of DQNs.
 

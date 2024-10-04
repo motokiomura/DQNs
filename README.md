@@ -19,20 +19,17 @@ Ape-X DQN : [DISTRIBUTED PRIORITIZED EXPERIENCE REPLAY](https://openreview.net/p
 ## Usage
 
 ```
-$ python dqn_atari.py --prioritized 1 --double 1 --dueling 1 --n_step 3
+$ python dqn_atari.py --prioritized --double --dueling --n_step 3
 ```
-### Prioritized Experience Replay
-`--prioritezed` : 0 or 1
+`--prioritezed`: Prioritized Experience Replay
 
-### Double Deep Q Learning (DDQN)
-`--double` : 0 or 1
+`--double`: Double Deep Q Learning (DDQN)
 
-### Dueling Network
-`--dueling` : 0 or 1
+`--dueling`: Dueling Network
 
-### multi-step bootstrap target
-`--n_step` : int (1 : normal TD error)
-<br>  
+`--n_step <int>`: Multi-step bootstrap target
+
+
 Other arguments are described in `dqn_atari.py`
 
 

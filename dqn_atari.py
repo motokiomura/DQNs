@@ -8,6 +8,7 @@ import tensorflow as tf
 from collections import deque
 from skimage.color import rgb2gray
 from skimage.transform import resize
+from keras import Sequential
 from keras.models import Model
 from keras.layers import Conv2D, Flatten, Dense, Input, Lambda, concatenate
 from keras import backend as K
@@ -95,6 +96,7 @@ class Agent():
         self.gamma = args.gamma
         self.gamma_n = args.gamma ** args.n_step
 
+        self.replay_memory_size = args.replay_memory_size
 
         self.num_actions = num_actions
         self.frame_width = frame_width
@@ -197,7 +199,7 @@ class Agent():
 
     def build_network(self):
         model = Sequential()
-        model.add(Conv2D(32, 8, strides=(4, 4), activation='relu', data_format="channels_first", input_shape=(STATE_LENGTH, FRAME_WIDTH, FRAME_HEIGHT)))
+        model.add(Conv2D(32, 8, strides=(4, 4), activation='relu', data_format="channels_first", input_shape=(self.state_length, self.frame_width, self.frame_height)))
         model.add(Conv2D(64, 4, strides=(2, 2), activation='relu'))
         model.add(Conv2D(64, 3, strides=(1, 1), activation='relu'))
         model.add(Flatten())
@@ -265,7 +267,7 @@ class Agent():
         raw_reward = reward
         reward = np.sign(reward)
 
-        if (not self.prioritized) and len(self.memory) > NUM_REPLAY_MEMORY:
+        if (not self.prioritized) and len(self.memory) > self.replay_memory_size:
             self.memory.popleft()
 
         #if self.t < INITIAL_REPLAY_SIZE:
@@ -477,15 +479,15 @@ class Agent():
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument('--prioritized', type=int, default=1, help='prioritized experience replay')
-    parser.add_argument('--double', type=int, default=1, help='Double-DQN')
-    parser.add_argument('--dueling', type=int, default=1, help='Dueling Network')
-    parser.add_argument('--n_step', type=int, default=3, help='n step bootstrap target')
+    parser.add_argument('--prioritized', action='store_true', help='prioritized experience replay')
+    parser.add_argument('--double', action='store_true', help='Double-DQN')
+    parser.add_argument('--dueling', action='store_true', help='Dueling Network')
+    parser.add_argument('--n_step', action='store_true', help='n step bootstrap target')
     parser.add_argument('--env_name', type=str, default='Alien-v0', help='Environment of Atari2600 games')
     parser.add_argument('--train', type=int, default=1, help='train mode or test mode')
-    parser.add_argument('--gui', type=int, default=0, help='decide whether you use GUI or not')
-    parser.add_argument('--load', type=int, default=0, help='loading saved network')
-    parser.add_argument('--network_path', type=str, default=0, help='used in loading and saving (default: \'saved_networks/<env_name>\')')
+    parser.add_argument('--gui', action='store_true', help='decide whether you use GUI or not')
+    parser.add_argument('--load', action='store_true', help='loading saved network')
+    parser.add_argument('--network_path', type=str, default=None, help='used in loading and saving (default: \'saved_networks/<env_name>\')')
     parser.add_argument('--replay_memory_size', type=int, default=1000000, help='replay memory size')
     parser.add_argument('--initial_replay_size', type=int, default=20000, help='Learner waits until replay memory stores this number of transition')
     parser.add_argument('--num_episodes', type=int, default=10000, help='number of episodes each agent plays')
@@ -493,7 +495,7 @@ def main():
 
     args = parser.parse_args()
 
-    if args.network_path == 0:
+    if not args.network_path:
         args.network_path = 'saved_networks/' + args.env_name
     if not os.path.exists(args.network_path):
         os.makedirs(args.network_path)
@@ -537,7 +539,7 @@ def main():
             action = agent.get_action_at_test(state)
             observation, _, terminal, _ = env.step(action)
             env.render()
-            processed_observation = preprocess(observation, last_observation)
+            processed_observation = agent.preprocess(observation, last_observation)
             state =np.append(state[1:, :, :], processed_observation, axis=0)
             # env.monitor.close()
 
